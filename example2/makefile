@@ -1,6 +1,6 @@
 OBJS = main.o libreria.o
 BINARY = program
-
+CFLAGS = -g -Wall #varibale usada en c
 x = primero
 Vrecursiva = $(x) recursiva #se ejecuta cuando se llama
 Vsimple := $(x) simple #se ejecuta al instante
@@ -15,10 +15,10 @@ programa: $(OBJS)
 		gcc -o $(BINARY) $(OBJS)
 
 main.o: main.c libreria.h
-		gcc -c main.c
+		gcc $(CFLAGS) -c main.c
 
 libreria.o: libreria.c libreria.h
-		gcc -c libreria.c
+		gcc $(CFLAGS) -c libreria.c
 
 clean: #phony rules
 		rm -f $(BINARY) $(OBJS)
